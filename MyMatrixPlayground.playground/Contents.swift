@@ -194,16 +194,16 @@ struct Matrix {
     
     /* ARITHMETIC OPERATORS */
     
-    static func + (left: Matrix, right: Matrix) -> Matrix {
+    static func + (left: Matrix, right: Matrix) -> Matrix? {
         var temp = left
-        temp.addMatrix(right)
-        return temp
+        let success = temp.addMatrix(right)
+        return success ? temp : nil
     }
     
-    static func - (left: Matrix, right: Matrix) -> Matrix {
+    static func - (left: Matrix, right: Matrix) -> Matrix? {
         var temp = left
-        temp.subtractMatrix(right)
-        return temp
+        let success = temp.subtractMatrix(right)
+        return success ? temp : nil
     }
     
     static func * (left: Matrix, scalar: Matrix) -> Matrix? {
@@ -232,18 +232,29 @@ let m2 = Matrix([
     [-3, -5, 6]
 ])
 
+let m3 = Matrix([
+    [5],
+    [9],
+    [2]
+])
 
 
+/*
 if let newMatrix = m1 * m2{
-    //newMatrix.dump()
+    newMatrix.dump()
     print()
 }
 
-let m3 = m2.transposeMatrix()
-let m4 = m2.inverseMatrix()
+let m4 = m2.transposeMatrix()
+let m5 = m2.inverseMatrix()
 
 m2.dump()
 print()
-m3.dump()
+m4.dump()
 print()
+m5?.dump()
+*/
+
+
+let m4 = m1*m3
 m4?.dump()
