@@ -162,7 +162,7 @@ struct Matrix {
         // Applying Gaussian elimination to get reduced row-echelon form
         for i in 0..<n {
             // Find pivot
-            var pivot = augmentedMatrix[i][i]
+            let pivot = augmentedMatrix[i][i]
             guard pivot != 0 else {
                 // If pivot is zero, matrix is not invertible
                 return nil
@@ -238,6 +238,16 @@ let m3 = Matrix([
     [2]
 ])
 
+let m4 = Matrix([[4, 6, 2]])
+
+
+let product = m4 * m1
+
+product?.dump()
+
+
+
+
 
 /*
 if let newMatrix = m1 * m2{
@@ -256,5 +266,5 @@ m5?.dump()
 */
 
 
-let m4 = m1*m3
-m4?.dump()
+//let m4 = m1*m3
+//m4?.dump()
