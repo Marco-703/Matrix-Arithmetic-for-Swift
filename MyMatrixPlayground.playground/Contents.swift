@@ -17,7 +17,7 @@ struct Matrix {
         matrix = [[]]
         let zeros = Array(repeating: Double(0), count: columns)
         matrix[0] = zeros
-        for i in 1..<rows {
+        for _ in 1..<rows {
             matrix.append(zeros)
         }
     }
@@ -136,7 +136,7 @@ struct Matrix {
         var transposedMatrix = Array(repeating: Array(repeating: Double(0), count: rows), count: columns)
         for row in 0..<rows {
             for column in 0..<columns {
-                transposedMatrix[row][column] = matrix[column][row]
+                transposedMatrix[column][row] = matrix[row][column]
             }
         }
         return Matrix(transposedMatrix)
@@ -220,6 +220,7 @@ struct Matrix {
 
 
 
+
 var m1 = Matrix([
     [1, 3, -2],
     [3, 1, 1],
@@ -241,9 +242,12 @@ let m3 = Matrix([
 let m4 = Matrix([[4, 6, 2]])
 
 
-let product = m4 * m1
+//let product = m4 * m1
 
-product?.dump()
+//product?.dump()
+
+let t = m3.transposeMatrix()
+t.dump()
 
 
 
