@@ -29,6 +29,26 @@ struct Matrix {
         matrix = content
     }
     
+    init(diagonal: Double, dimension: Int) {
+        self.rows = dimension
+        self.columns = dimension
+        
+        matrix = Array(repeating: Array(repeating: Double(0), count: dimension), count: dimension)
+        for i in 0..<dimension {
+            matrix[i][i] = diagonal
+        }
+    }
+    
+    init(diagonal: [Double]) {
+        self.rows = diagonal.count
+        self.columns = diagonal.count
+        
+        matrix = Array(repeating: Array(repeating: Double(0), count: rows), count: rows)
+        for i in 0..<rows {
+            matrix[i][i] = diagonal[i]
+        }
+    }
+    
     
     /* GETTER */
     
@@ -221,6 +241,7 @@ struct Matrix {
 
 
 
+
 var m1 = Matrix([
     [1, 3, -2],
     [3, 1, 1],
@@ -246,9 +267,13 @@ let m4 = Matrix([[4, 6, 2]])
 
 //product?.dump()
 
-let t = m3.transposeMatrix()
-t.dump()
 
+let diag1 = Matrix(diagonal: 0.07, dimension: 6)
+let diag2 = Matrix(diagonal: [0.1, 0.2, 0.3, 0.4, 0.5])
+
+diag1.dump()
+print()
+diag2.dump()
 
 
 
